@@ -1,15 +1,45 @@
-# Docker CURL (alpine)
+# Docker CURL
 
-> Alpine Linux with CURL installed and **not** set as entrypoint.
+> CURL Docker (alpine) | Automatically detect usage as command line or as an image | Flexible use
 
-## Usage
+Size: `5.48MB`
+
+# Usage
+
+> Flexible, unlimited usage
+
+## Like a CLI
 
 ```
-docker run -it weup/curl sh
-curl https://google.com
-exit
+docker run --rm weup/curl https://google.com
 ```
 
-## Prior art
+## Get inside
 
-This has been inspired by https://github.com/byrnedo/docker-alpine-curl
+```
+docker run -it weup/curl
+$ curl https://google.com
+$ exit
+```
+
+## Image for Gitlab's CI
+
+```
+stages:
+  - curl
+
+curl-data:
+  image: weup/curl
+  stage: curl
+  script:
+    - curl https://google.com
+```
+
+## Create a new Dockerfile
+
+```
+FROM weup/curl
+...
+```
+
+And anything else
